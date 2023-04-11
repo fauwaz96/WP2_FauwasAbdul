@@ -3,10 +3,18 @@
 <head>
     <title>Form Input Matakuliah</title>
 </head>
+<style>
+    .error {
+        color: red;
+        font-size: 11px;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
 
 <body>
     <center>
-        <form action="<?= base_url('matakuliah/cetak'); ?>" method="post">
+        <form action="<?= base_url('matakuliah2/cetak'); ?>" method="post">
             <table>
                 <tr>
                     <th colspan="3">
@@ -24,6 +32,12 @@
                     <td>
                         <input type="text" name="kode" id="kode">
                     </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <marquee><?php echo form_error('kode', '<div class="error">', '</div>') ?> </marquee>
+                    </td>
                 </tr>
                 <tr>
                     <th>Nama MTK</th>
@@ -31,6 +45,9 @@
                     <td>
                         <input type="text" name="nama" id="nama">
                     </td>
+                </tr>
+                <tr>
+                    <td colspan="3"> <?php echo form_error('nama', '<div class="error">', '</div>') ?></td>
                 </tr>
                 <tr>
                     <th>SKS</th>
@@ -44,12 +61,17 @@
                         </select>
                     </td>
                 </tr>
+
+
                 <tr>
                     <td colspan="3" align="center">
                         <input type="submit" value="Submit">
                     </td>
                 </tr>
             </table>
+            <div style="color: red;">
+                <?php echo validation_errors() ?>
+            </div>
         </form>
     </center>
 </body>
